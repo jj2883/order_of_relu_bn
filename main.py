@@ -35,6 +35,7 @@ path_file = os.path.join(path_current,path_subdir,data_filename)
 f=open(path_file,'w')
 
 #########################################################
+global args
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
@@ -114,7 +115,7 @@ train_prec1s =np.zeros((args.epochs))
 eval_losses =np.zeros((args.epochs))
 eval_prec1s =np.zeros((args.epochs))
 x_epoch = np.zeros((args.epochs))
-global args, best_prec1
+global best_prec1
 
 #####################################################################
 
