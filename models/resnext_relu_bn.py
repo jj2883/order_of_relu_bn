@@ -55,8 +55,8 @@ class ResNeXt_rb(nn.Module):
         strides = [stride] + [1]*(num_blocks-1)
         layers = []
         for stride in strides:
-            layers.append(Block(self.in_planes, self.cardinality, self.bottleneck_width, stride))
-            self.in_planes = Block.expansion * self.cardinality * self.bottleneck_width
+            layers.append(Block_rb(self.in_planes, self.cardinality, self.bottleneck_width, stride))
+            self.in_planes = Block_rb.expansion * self.cardinality * self.bottleneck_width
         # Increase bottleneck_width by 2 after each stage.
         self.bottleneck_width *= 2
         return nn.Sequential(*layers)
@@ -86,7 +86,7 @@ def ResNeXt29_32x4d_rb():
     return ResNeXt_rb(num_blocks=[3,3,3], cardinality=32, bottleneck_width=4)
 
 def test_resnext_rb():
-    net = ResNeXt29_2x64d_rb()
+    net = ResNeXt29_2x64d()
     x = torch.randn(1,3,32,32)
     y = net(x)
     print(y.size())
