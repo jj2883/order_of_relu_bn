@@ -233,10 +233,10 @@ def train(train_loader, model, criterion, optimizer, epoch,f):
 
 
         inputs, targets = inputs.to(device), targets.to(device)
-        optimizer.zero_grad()
+        #optimizer.zero_grad()
         outputs = net(inputs)
         loss = criterion(outputs, targets)
-        loss.backward()
+        #loss.backward()
 
 ###########################################################
         # measure accuracy and record loss
