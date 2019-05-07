@@ -241,9 +241,9 @@ def train(train_loader, model, criterion, optimizer, epoch,f):
 ###########################################################
         # measure accuracy and record loss
         prec1, prec5 = accuracy(outputs, targets, topk=(1, 5))
-        losses.update(loss.item(), img.size(0))
-        top1.update(prec1[0], img.size(0))
-        top5.update(prec5[0], img.size(0))
+        losses.update(loss.item(), inputs.size(0))
+        top1.update(prec1[0], inputs.size(0))
+        top5.update(prec5[0], inputs.size(0))
         # compute gradient and do SGD step
         optimizer.zero_grad()
         loss.backward()
@@ -315,9 +315,9 @@ def test(val_loader, net, criterion,f):
 #####################################################
             # measure accuracy and record loss
             prec1, prec5 = accuracy(outputs, targets, topk=(1, 5))
-            losses.update(loss.item(), img.size(0))
-            top1.update(prec1[0], img.size(0))
-            top5.update(prec5[0], img.size(0))
+            losses.update(loss.item(), inputs.size(0))
+            top1.update(prec1[0], inputs.size(0))
+            top5.update(prec5[0], inputs.size(0))
 
             # measure elapsed time
             batch_time.update(time.time() - end)
